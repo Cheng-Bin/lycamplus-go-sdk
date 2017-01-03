@@ -1,0 +1,4 @@
+package: github.com/lycam-dev/lycamplus-go-sdk/lycamplus
+import: [
+    
+]
