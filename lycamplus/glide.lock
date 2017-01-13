@@ -1,6 +1,12 @@
-hash: 0f0c1c3f1cf506525e7a8bad8ed5ff246f229a659393d65b9d66a36a0e48deab
-updated: 2017-01-13T12:45:40.210386229+08:00
+hash: 8d235d7ce64f4c07276f5f597f243127127af580a207580d31a8c208afde6eaf
+updated: 2017-01-13T17:36:58.796255304+08:00
 imports:
+- name: github.com/bitly/go-simplejson
+  version: aabad6e819789e569bd6aabf444c935aa9ba1e44
+- name: github.com/fatih/structs
+  version: a720dfa8df582c51dee1b36feabb906bde1588bd
+- name: github.com/fatih/structs.git
+  version: a720dfa8df582c51dee1b36feabb906bde1588bd
 - name: github.com/golang/protobuf
   version: 8ee79997227bf9b34611aee7946ae64735e6fd93
   subpackages:
@@ -8,9 +14,11 @@ imports:
 - name: github.com/mozillazg/request
   version: 052232e32456da4751d789b61e89aba4a07a7e25
 - name: golang.org/x/net
-  version: 60c41d1de8da134c05b7b40154a9a82bf5b7edb9
+  version: c4c3ea71919de159c9e246d7be66deb7f0a39a58
   subpackages:
   - context
+  - proxy
+  - publicsuffix
 - name: golang.org/x/oauth2
   version: 314dd2c0bf3ebd592ec0d20847d27e79d0dbe8dd
   subpackages:

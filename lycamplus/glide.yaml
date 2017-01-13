@@ -3,3 +3,5 @@ import:
 - package: golang.org/x/oauth2
 - package: github.com/mozillazg/request
   version: ^0.8.0
+- package: github.com/bitly/go-simplejson
+  version: ^0.5.0

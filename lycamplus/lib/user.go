@@ -20,6 +20,6 @@ func (u *User) create() {
 
 }
 
-func (u *user) assume(uuid string) {
+func (u *User) assume(uuid string) {
 
 }

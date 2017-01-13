@@ -16,3 +16,11 @@ const (
 	// DefaultUsername master name.
 	DefaultUsername = "master"
 )
+
+// variables
+var username = DefaultUsername
+var (
+	appKey    string
+	appSecret string
+	password  string
+)
