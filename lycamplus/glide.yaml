@@ -1,6 +1,5 @@
 package: github.com/lycam-dev/lycamplus-go-sdk/lycamplus
 import:
 - package: golang.org/x/oauth2
-- package: golang.org/x/net
-  subpackages:
-  - context
+- package: github.com/mozillazg/request
+  version: ^0.8.0

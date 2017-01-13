@@ -1,12 +1,14 @@
-hash: b850d1893e3632a0a208a915f2171fde7fafb7622f4800a29b41bba0109aa070
-updated: 2017-01-04T11:07:12.59989256+08:00
+hash: 0f0c1c3f1cf506525e7a8bad8ed5ff246f229a659393d65b9d66a36a0e48deab
+updated: 2017-01-13T12:45:40.210386229+08:00
 imports:
 - name: github.com/golang/protobuf
   version: 8ee79997227bf9b34611aee7946ae64735e6fd93
   subpackages:
   - proto
+- name: github.com/mozillazg/request
+  version: 052232e32456da4751d789b61e89aba4a07a7e25
 - name: golang.org/x/net
-  version: 69d4b8aa71caaaa75c3dfc11211d1be495abec7c
+  version: 60c41d1de8da134c05b7b40154a9a82bf5b7edb9
   subpackages:
   - context
 - name: golang.org/x/oauth2
@@ -14,7 +16,7 @@ imports:
   subpackages:
   - internal
 - name: google.golang.org/appengine
-  version: 08a149cfaee099e6ce4be01c0113a78c85ee1dee
+  version: 8758a385849434ba5eac8aeedcf5192c5a0f5f10
   subpackages:
   - internal
   - internal/base

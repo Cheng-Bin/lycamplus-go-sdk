@@ -1,9 +1,9 @@
 package lib
 
 import (
+	"context"
 	"fmt"
 
-	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
 )
 
