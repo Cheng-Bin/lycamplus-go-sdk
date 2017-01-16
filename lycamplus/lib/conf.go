@@ -24,3 +24,25 @@ var (
 	appSecret string
 	password  string
 )
+
+// InitKey .
+func InitKey(_appKey, _appSecret, _masterSecret string) {
+	appKey = _appKey
+	appSecret = _appSecret
+	password = _masterSecret
+}
+
+// SetAppKey .
+func SetAppKey(_appKey string) {
+	appKey = _appKey
+}
+
+// SetAppSecret .
+func SetAppSecret(_appSecret string) {
+	appSecret = _appSecret
+}
+
+// SetMasterSecret .
+func SetMasterSecret(_masterSecret string) {
+	password = _masterSecret
+}
