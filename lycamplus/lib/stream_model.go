@@ -4,20 +4,19 @@ package lib
 // request
 //
 // StreamRequest struct.
-type StreamRequest struct {
-	UUID         string                 `json:"uuid"`
-	Title        string                 `json:"title"`
-	Description  string                 `json:"description"`
-	ThumbnailURL string                 `json:"thumbnailUrl"`
-	StartLat     float32                `json:"startLat"`
-	StartLon     float32                `json:"startLon"`
-	EndLat       float32                `json:"endLat"`
-	EndLon       float32                `json:"endLon"`
-	Country      string                 `json:"country"`
-	State        string                 `json:"state"`
-	City         string                 `json:"city"`
-	Privacy      bool                   `json:"privacy"`
-	ExtraInfo    map[string]interface{} `json:"extraInfo"`
+type StreamRequestModel struct {
+	UUID         string  `json:"uuid"`
+	Title        string  `json:"title"`
+	Description  string  `json:"description"`
+	ThumbnailURL string  `json:"thumbnailUrl"`
+	StartLat     float32 `json:"startLat"`
+	StartLon     float32 `json:"startLon"`
+	EndLat       float32 `json:"endLat"`
+	EndLon       float32 `json:"endLon"`
+	Country      string  `json:"country"`
+	State        string  `json:"state"`
+	City         string  `json:"city"`
+	Privacy      bool    `json:"privacy"`
 }
 
 //
@@ -31,9 +30,9 @@ type StreamURL struct {
 	Bitrate int    `json:"bitrate"`
 }
 
-//StreamResponse struct.
-type StreamResponse struct {
-	StreamRequest
+//StreamResponseModel struct.
+type StreamResponseModel struct {
+	StreamRequestModel
 	StreamID         string      `json:"streamId"`
 	Status           string      `json:"status"`
 	StreamUrls       []StreamURL `json:"streamUrls"`
@@ -48,4 +47,50 @@ type StreamResponse struct {
 	VideoOrientation int         `json:"videoOrientation"`
 	TimeStarted      string      `json:"timeStarted"`
 	TimeFinished     string      `json:"timeFinished"`
+}
+
+// StreamResponseModelList struct.
+type StreamResponseModelList struct {
+	TotalItems        int                   `json:"totalItems"`
+	ResultsPerPage    int                   `json:"resultsPerPage"`
+	PageNumber        int                   `json:"pageNumber"`
+	NextPageAvailable bool                  `json:"nextPageAvailable"`
+	Items             []StreamResponseModel `json:"items"`
+}
+
+//
+// KeywordModel
+//
+
+//KeywordModel struct.
+type KeywordModel struct {
+	Keyword        string `json:"keyword"`
+	ResultsPerPage int    `json:"resultsPerPage"`
+	Page           int    `json:"page"`
+	Sort           string `json:"sort"`
+	Order          string `json:"order"`
+}
+
+//
+// LocationModel
+//
+
+// LocationModel struct.
+type LocationModel struct {
+	Lon            float32 `json:"lon"`
+	Lat            float32 `json:"lat"`
+	Radius         int     `json:"radius"`
+	ResultsPerPage int     `json:"resultsPerPage"`
+	Page           int     `json:"page"`
+	Sort           string  `json:"sort"`
+	Order          string  `json:"order"`
+}
+
+//
+// SuccessResponseModel
+//
+
+// SuccessResponseModel struct.
+type SuccessResponseModel struct {
+	Success bool `json:"success"`
 }

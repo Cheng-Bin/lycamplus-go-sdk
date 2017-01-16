@@ -36,12 +36,3 @@ func Struct2Map(obj interface{}) (map[string]string, error) {
 
 	return data, nil
 }
-
-func AdanceUnmarshal(data []byte, v interface{}) error {
-
-	if value, ok := v.(StreamResponse); ok {
-		value.ExtraInfo = make(map[string]interface{})
-	}
-
-	return json.Unmarshal(data, &v)
-}

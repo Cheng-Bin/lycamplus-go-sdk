@@ -1,16 +1,14 @@
-hash: 8d235d7ce64f4c07276f5f597f243127127af580a207580d31a8c208afde6eaf
-updated: 2017-01-13T17:36:58.796255304+08:00
+hash: 5f41b0aa9de331f2f1de78ed9d7922b18937b8df0406fd4a2d9b8b3c7858ee0b
+updated: 2017-01-16T11:05:18.017518589+08:00
 imports:
 - name: github.com/bitly/go-simplejson
   version: aabad6e819789e569bd6aabf444c935aa9ba1e44
-- name: github.com/fatih/structs
-  version: a720dfa8df582c51dee1b36feabb906bde1588bd
-- name: github.com/fatih/structs.git
-  version: a720dfa8df582c51dee1b36feabb906bde1588bd
 - name: github.com/golang/protobuf
   version: 8ee79997227bf9b34611aee7946ae64735e6fd93
   subpackages:
   - proto
+- name: github.com/gorilla/schema
+  version: dfd60678a6033f19803293695dcd30f40ed3cd19
 - name: github.com/mozillazg/request
   version: 052232e32456da4751d789b61e89aba4a07a7e25
 - name: golang.org/x/net
@@ -24,7 +22,7 @@ imports:
   subpackages:
   - internal
 - name: google.golang.org/appengine
-  version: 8758a385849434ba5eac8aeedcf5192c5a0f5f10
+  version: 9e2ad0873f358c54296ccdc5116b0652c98226d1
   subpackages:
   - internal
   - internal/base

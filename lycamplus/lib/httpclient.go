@@ -76,25 +76,25 @@ func NewHTTPClient() *HTTPClient {
 }
 
 // Get helper method.
-func (that *HTTPClient) Get(path string) (string, error) {
+func (that *HTTPClient) Get(path string) ([]byte, error) {
 	resp, err := that.req.Get(path)
 	if err != nil {
-		return Empty, err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return Empty, NewStatusError("Get()", resp.Reason())
+		return nil, NewStatusError("Get()", resp.Reason())
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		return Empty, NewStatusError("Get()", err.Error())
+		return nil, NewStatusError("Get()", err.Error())
 	}
 
-	return string(body), nil
+	return body, nil
 }
 
 // Post helper method.
@@ -122,49 +122,49 @@ func (that *HTTPClient) Post(path string, data map[string]string) ([]byte, error
 }
 
 // Put helper method.
-func (that *HTTPClient) Put(path string, data map[string]string) (string, error) {
+func (that *HTTPClient) Put(path string, data map[string]string) ([]byte, error) {
 	that.req.Data = data
 	resp, err := that.req.Put(path)
 
 	if err != nil {
-		return Empty, err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return Empty, err
+		return nil, err
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		return Empty, NewStatusError("Put()", err.Error())
+		return nil, NewStatusError("Put()", err.Error())
 	}
 
-	return string(body), nil
+	return body, nil
 }
 
 // Delete helper method.
-func (that *HTTPClient) Delete(path string) (string, error) {
+func (that *HTTPClient) Delete(path string) ([]byte, error) {
 
 	resp, err := that.req.Delete(path)
 
 	if err != nil {
-		return Empty, err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return Empty, err
+		return nil, err
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		return Empty, NewStatusError("Delete()", err.Error())
+		return nil, NewStatusError("Delete()", err.Error())
 	}
 
-	return string(body), nil
+	return body, nil
 }

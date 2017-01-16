@@ -5,12 +5,9 @@ import (
 )
 
 func TestStruct2Map(t *testing.T) {
-	streamRequest := StreamRequest{}
-	streamRequest.Title = "zhangsan"
-	streamRequest.ExtraInfo = map[string]interface{}{
-		"height": "170",
-		"weight": "60",
-	}
+	StreamRequestModel := StreamRequestModel{}
+	StreamRequestModel.Title = "zhangsan"
+	StreamRequestModel.City = "ChengDu"
 
-	Struct2Map(streamRequest)
+	Struct2Map(StreamRequestModel)
 }
