@@ -10,7 +10,7 @@ type Stream struct {
 // NewStream function.
 func NewStream() *Stream {
 	return &Stream{
-		client: new(HTTPClient),
+		client: NewHTTPClient(),
 	}
 }
 
@@ -18,13 +18,25 @@ func NewStream() *Stream {
 func (that *Stream) Create(stream StreamRequest) (*StreamResponse, error) {
 
 	path := fmt.Sprintf("%s/%s/%s", DefaultAPIURL, DefaultAPIVersion, "streams")
-	params := Struct2Map(stream)
-
-	_, err := that.client.Post(path, params)
+	params, err := Struct2Map(stream)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return nil, nil
+	data, err := that.client.Post(path, params)
+
+	if err != nil {
+		return nil, err
+	}
+
+	response := new(StreamResponse)
+
+	err = AdanceUnmarshal(data, response)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
 }

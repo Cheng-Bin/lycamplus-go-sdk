@@ -98,28 +98,27 @@ func (that *HTTPClient) Get(path string) (string, error) {
 }
 
 // Post helper method.
-func (that *HTTPClient) Post(path string, data map[string]string) (string, error) {
-
+func (that *HTTPClient) Post(path string, data map[string]string) ([]byte, error) {
 	that.req.Data = data
 	resp, err := that.req.Post(path)
 
 	if err != nil {
-		return Empty, err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return Empty, NewStatusError("Post()", resp.Reason())
+		return nil, NewStatusError("Post()", resp.Reason())
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		return Empty, NewStatusError("Post()", err.Error())
+		return nil, NewStatusError("Post()", err.Error())
 	}
 
-	return string(body), nil
+	return body, nil
 }
 
 // Put helper method.

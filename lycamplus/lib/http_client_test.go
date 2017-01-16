@@ -21,9 +21,9 @@ func TestGet(t *testing.T) {
 
 func TestPost(t *testing.T) {
 	client := NewHTTPClient()
-	params := map[string]string{
-		"title": "chapin的测试",
-	}
+
+	params := map[string]string{"title": "lycamplus test"}
+
 	body, err := client.Post(DefaultAPIURL+"/v1/streams", params)
 	if err != nil {
 		t.Errorf("occured error: %s", err.Error())
