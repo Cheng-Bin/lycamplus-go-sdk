@@ -7,6 +7,10 @@ import (
 	"net/http"
 	"sync"
 
+	"golang.org/x/oauth2"
+
+	"time"
+
 	"github.com/mozillazg/request"
 )
 
@@ -28,26 +32,31 @@ var httpClient *HTTPClient
 // httpHook struct
 type httpHook struct{}
 
+// lycamToken
+var lycamToken *oauth2.Token
+
 // BeforeRequest added access_token
 func (h *httpHook) BeforeRequest(req *http.Request) (resp *http.Response, err error) {
-
-	appKey := appKey
-	appSecret := appSecret
-	username := DefaultUsername
-	password := password
 
 	if appKey == Empty || appSecret == Empty || password == Empty {
 		log.Fatal("appKey, appSecret and password is required.")
 	}
 
-	lycamPlusOAuth2 := NewLycamPlusOAuth2(appKey, appSecret)
-	token, err := lycamPlusOAuth2.OAuth(username, password)
+	var token string
 
-	if err != nil {
-		log.Fatal(err.Error())
+	if lycamToken == nil || isExpire(lycamToken.Expiry) {
+
+		lycamPlusOAuth2 := NewLycamPlusOAuth2(appKey, appSecret)
+		lycamToken, err = lycamPlusOAuth2.OAuth(username, password)
+
+		if err != nil {
+			log.Fatal(err.Error())
+		}
 	}
 
-	req.Header.Set(Authorization, fmt.Sprintf("%s %s", Bearer, token.AccessToken))
+	token = lycamToken.AccessToken
+
+	req.Header.Set(Authorization, fmt.Sprintf("%s %s", Bearer, token))
 
 	return
 }
@@ -168,4 +177,9 @@ func (that *HTTPClient) Delete(path string) ([]byte, error) {
 	}
 
 	return body, nil
+}
+
+// token Expire
+func isExpire(date time.Time) bool {
+	return time.Now().After(date)
 }
