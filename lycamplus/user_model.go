@@ -1,4 +1,5 @@
-package lib
+package lycamplus
+
 
 // UserRequestModel struct.
 type UserRequestModel struct {

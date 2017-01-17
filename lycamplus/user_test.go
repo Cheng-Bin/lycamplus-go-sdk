@@ -1,19 +1,19 @@
-package lib
+package lycamplus
 
 import (
 	"testing"
+
+	"github.com/lycam-dev/lycamplus-go-sdk/lycamplus/lib"
 )
 
 func init() {
-	appKey = "488ITUGN1G"
-	appSecret = "z1oyx55jNQEXeRUu1iltfINZegWuGx"
-	password = "9O1MZJ5UJwnuZky3tUBiZFPAlDJNs2"
+	lib.InitKey("488ITUGN1G", "z1oyx55jNQEXeRUu1iltfINZegWuGx", "9O1MZJ5UJwnuZky3tUBiZFPAlDJNs2")
 }
 
 func TestCreateUser(t *testing.T) {
 	userInstance := NewUser()
 	userRequestModel := UserRequestModel{UserName: "zhangsan"}
-	response, err := userInstance.Create(userRequestModel)
+	response, err := userInstance.Create(&userRequestModel)
 	if err != nil {
 		t.Error(err)
 	} else {

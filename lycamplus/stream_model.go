@@ -1,4 +1,4 @@
-package lib
+package lycamplus
 
 //
 // request
@@ -62,13 +62,18 @@ type StreamResponseModelList struct {
 // KeywordModel
 //
 
-//KeywordModel struct.
-type KeywordModel struct {
-	Keyword        string `json:"keyword"`
+// PageModel struct.
+type PageModel struct {
 	ResultsPerPage int    `json:"resultsPerPage"`
 	Page           int    `json:"page"`
 	Sort           string `json:"sort"`
 	Order          string `json:"order"`
+}
+
+//KeywordModel struct.
+type KeywordModel struct {
+	PageModel
+	Keyword string `json:"keyword"`
 }
 
 //
@@ -77,13 +82,10 @@ type KeywordModel struct {
 
 // LocationModel struct.
 type LocationModel struct {
-	Lon            float32 `json:"lon"`
-	Lat            float32 `json:"lat"`
-	Radius         int     `json:"radius"`
-	ResultsPerPage int     `json:"resultsPerPage"`
-	Page           int     `json:"page"`
-	Sort           string  `json:"sort"`
-	Order          string  `json:"order"`
+	PageModel
+	Lon    float32 `json:"lon"`
+	Lat    float32 `json:"lat"`
+	Radius int     `json:"radius"`
 }
 
 //

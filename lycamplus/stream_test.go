@@ -1,12 +1,14 @@
-package lib
+package lycamplus
 
-import "testing"
-import "time"
+import (
+	"testing"
+	"time"
+
+	"github.com/lycam-dev/lycamplus-go-sdk/lycamplus/lib"
+)
 
 func init() {
-	appKey = "488ITUGN1G"
-	appSecret = "z1oyx55jNQEXeRUu1iltfINZegWuGx"
-	password = "9O1MZJ5UJwnuZky3tUBiZFPAlDJNs2"
+	lib.InitKey("488ITUGN1G", "z1oyx55jNQEXeRUu1iltfINZegWuGx", "9O1MZJ5UJwnuZky3tUBiZFPAlDJNs2")
 }
 
 func TestStreamCreate(t *testing.T) {
@@ -20,7 +22,7 @@ func TestStreamCreate(t *testing.T) {
 		EndLon:   90.6,
 	}
 
-	response, err := streamInstance.Create(requestModel)
+	response, err := streamInstance.Create(&requestModel)
 
 	if err != nil {
 		t.Error(err)
@@ -40,7 +42,7 @@ func TestStreamUpdate(t *testing.T) {
 		Privacy: false,
 	}
 
-	response, err := streamInstance.Update(streamID, requestModel)
+	response, err := streamInstance.Update(streamID, &requestModel)
 
 	if err != nil {
 		t.Error(err)
@@ -66,7 +68,10 @@ func TestStreamShow(t *testing.T) {
 
 func TestStreamList(t *testing.T) {
 	streamInstance := NewStream()
-	response, err := streamInstance.List()
+	pageModel := PageModel{
+		ResultsPerPage: 2,
+	}
+	response, err := streamInstance.List(&pageModel)
 	if err != nil {
 		t.Error(err)
 	} else {
@@ -78,7 +83,11 @@ func TestStreamList(t *testing.T) {
 func TestStreamListSince(t *testing.T) {
 
 	streamInstance := NewStream()
-	response, err := streamInstance.ListSince(time.Now().UnixNano())
+	pageModel := PageModel{
+		ResultsPerPage: 2,
+	}
+
+	response, err := streamInstance.ListSince(time.Now().UnixNano(), &pageModel)
 
 	if err != nil {
 		t.Error(err)
@@ -90,7 +99,7 @@ func TestStreamListSince(t *testing.T) {
 func TestStreamSearchByKeyword(t *testing.T) {
 	streamInstance := NewStream()
 	keywordModel := KeywordModel{Keyword: "lycamplus"}
-	response, err := streamInstance.SearchByKeyword(keywordModel)
+	response, err := streamInstance.SearchByKeyword(&keywordModel)
 	if err != nil {
 		t.Error(err)
 	} else {
@@ -102,7 +111,7 @@ func TestStreamSearchByKeyword(t *testing.T) {
 func TestStreamSearchByLocation(t *testing.T) {
 	streamInstance := NewStream()
 	locationModel := LocationModel{Lon: 90.6, Lat: 90.6, Radius: 1000}
-	response, err := streamInstance.SearchByLocation(locationModel)
+	response, err := streamInstance.SearchByLocation(&locationModel)
 	if err != nil {
 		t.Error(err)
 	} else {

@@ -53,6 +53,7 @@ func (h *httpHook) BeforeRequest(req *http.Request) (resp *http.Response, err er
 }
 
 func (h *httpHook) AfterRequest(req *http.Request, resp *http.Response, err error) (newResp *http.Response, newErr error) {
+	resp.Header.Set("Content-Encoding", "gzip")
 	return
 }
 

@@ -1,26 +1,28 @@
-package lib
+package lycamplus
 
 import (
 	"encoding/json"
 	"fmt"
+
+	"github.com/lycam-dev/lycamplus-go-sdk/lycamplus/lib"
 )
 
 // User struct define.
 type User struct {
-	client *HTTPClient
+	client *lib.HTTPClient
 }
 
 // NewUser .
 func NewUser() *User {
-	return &User{client: NewHTTPClient()}
+	return &User{client: lib.NewHTTPClient()}
 }
 
 // Create method.
-func (u *User) Create(userRequestModel UserRequestModel) (*UserResponseModel, error) {
+func (u *User) Create(userRequestModel *UserRequestModel) (*UserResponseModel, error) {
 
-	path := fmt.Sprintf("%s/%s/%s", DefaultAPIURL, DefaultAPIVersion, "users")
+	path := fmt.Sprintf("%s/%s/%s", lib.DefaultAPIURL, lib.DefaultAPIVersion, "users")
 
-	params, err := Struct2Map(userRequestModel)
+	params, err := lib.Struct2Map(userRequestModel)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +45,7 @@ func (u *User) Create(userRequestModel UserRequestModel) (*UserResponseModel, er
 
 // Assume method.
 func (u *User) Assume(uuid string) (*TokenResponseModel, error) {
-	path := fmt.Sprintf("%s/%s/%s/%s/%s", DefaultAPIURL, DefaultAPIVersion, "users", uuid, "assume")
+	path := fmt.Sprintf("%s/%s/%s/%s/%s", lib.DefaultAPIURL, lib.DefaultAPIVersion, "users", uuid, "assume")
 
 	data, err := u.client.Post(path, nil)
 
