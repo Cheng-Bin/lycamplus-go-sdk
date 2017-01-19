@@ -5,7 +5,7 @@ package lycamplus
 //
 // StreamRequest struct.
 type StreamRequestModel struct {
-	UUID         string  `json:"uuid"`
+	UUID         string  `json:"user"`
 	Title        string  `json:"title"`
 	Description  string  `json:"description"`
 	ThumbnailURL string  `json:"thumbnailUrl"`
